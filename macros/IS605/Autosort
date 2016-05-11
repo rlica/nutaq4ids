@@ -1,0 +1,40 @@
+#!/bin/bash
+
+#Author: R. Lica, razvan.lica@cern.ch
+
+if [ -z $1 ] 
+  then
+    echo "ERROR: Run number required as argument (eg: 00X)."
+    exit 1
+fi
+
+printf -v RUN_NUMBER "%03d" $1
+echo $RUN_NUMBER
+
+n4i config_gasp <<echo
+$RUN_NUMBER
+$RUN_NUMBER
+echo
+
+gsort << echo
+is605.setup
+256
+256
+D
+Run$RUN_NUMBER
+16
+N
+N
+echo
+
+mv TsE-Clov-noAB.cmat TsE-Clov-noAB-R$RUN_NUMBER.cmat
+mv TsE-Clov.cmat TsE-Clov-R$RUN_NUMBER.cmat
+
+n4i config_stat <<echo
+$RUN_NUMBER
+$RUN_NUMBER
+echo
+
+ls -lrth *$RUN_NUMBER.cmat
+
+xtrackn 

@@ -1,0 +1,89 @@
+
+CHANGELOG
+
+
+
+11.09.2014
+Nutaq2GASPware - n2g - First working version. Writing only in GASPware format. 
+
+
+04.10.2014
+New "Format" option in config. Format = {gasp, list, stats}
+
+
+08.10.2014
+Added Calibrations, same as for Grain.
+New "Fold" option in config. (coincidence level)
+read_grain.h: Storing only data from ADCs defined in config file -> huge speed improvement
+
+
+20.10.2014
+New error messages when reading the config file -> almost "idiot proof"
+Changed maxnum to maxnum[dettype] to optimize speed and fix a possible bug in 'event_builder.h'
+List mode output is more complex, added timestamp difference, customizable in the config file
+This is the final C version of the code.
+
+
+24.10.2014
+The code is compiled via 'make', using g++. ROOT must be installed.
+Added root option Format = {gasp, list, stats, root}
+Tree Branches are defined in the config file -> each detector type is a branch (the same as for event lists)
+The event builder used is 'event_builder_tree.h' -> check comments inside it for more details
+Added percentages and remaining time in write_time.hh
+"Memoryuse" is not needed anymore (set to default 100.000)
+Fixed 'tref'-reference is kept even in different files of the same run.
+Added comments column in the config file.
+Fixed "parameter = 0" bug in GASPware output.
+
+
+27.10.2014
+ROOT file contains also histograms with singles ("define_root.hh")
+"event_builder_tree.hh" -> HRT not relative to the event mean any more. 
+The first signal in the event has timestamp zero 
+E_Reference contains the time till the next reference. Energy is useless. 
+Comments in the config file are the branches names.
+
+
+10.11.2014
+Starting this GitHub thing. New name: Nutaq4IDS - n4i
+"calibrate.hh" - Fix random number bug (observed only in OSX)
+
+
+14.11.2014
+In correlation mode: fixed some bugs
+RunStart and RunStop not required any more in the config file
+
+13.08.2015
+Modified the event builder (require new config and .setup files). Same .setup files can be used
+  - Removed the old GASP header (difference between proton pulses) -> now the code is faster
+  - Run time is defined in the header (GASP), LRT is defined as before only if reftype > 0
+  - Both references are included (proton and run start) for both GASP and ROOT
+In correlation mode the unit is always 10ns (1 digitizer unit)
+Adding new format: rate (reading only the last buffer and displaying stats for it) - the input file is set as the second argument (argv[2])
+
+16.08.2015
+The ROOT Tree has arrays as branches
+The 'rate' mode will also write a ROOT file containing the last part of the file
+
+20.08.2015
+Fixed various memory bugs due to the new ROOT leafs (damn ROOT). Now everything works, as much as I know of.
+
+30.08.2015
+Changed ROOT branch naming (removed empty spaces) and defined the TIMESTAMP as a
+ULong64_t
+
+11.09.2015
+Fixed ROOT Memory leak causing it to crash when converting huge files. (just lowered memoryuse)
+read_config.hh - ntmc can store more values for the same signal (good for veto)
+
+21.10.2015
+Fix in the Makefile:
+Thanks to https://root.cern.ch/phpBB3/viewtopic.php?t=18344
+Changed $(CC) $(LDFLAGS) $(OBJECTS) -o $@ into $(CC) -o $@ $(OBJECTS) $(LDFLAGS)
+
+11.05.2016
+Fixed the "old block at the beginning of file" problem, now it reads the first
+timestamp from the second block.
+
+
+ 

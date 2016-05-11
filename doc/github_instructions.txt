@@ -1,0 +1,26 @@
+ 
+Setup your local Git profile - In the terminal:
+Type git config --global user.name "your-name"
+Type git config --global user.email "your-email"
+
+To check if Git is already config-ed you can type git config --list
+
+
+git init - This initializes a git repository in your project
+git status
+
+
+TO PUSH:
+git add . - This adds in all of your files & changes so far to a staging area.
+git commit -m "first commit" - This commits all of your files, adding the message “first commit”
+git remote add origin https://github.com/username/project - This creates a remote, or connection, named “origin” pointing at the GitHub repository you just created.
+git push -u origin master - This sends your commits in your “master” branch to GitHub
+
+
+
+
+If you want to continue making changes and pushing them to GitHub you’ll just need to use the following three commands:
+
+git add .
+git commit -m "type your commit message here"
+git push origin master

@@ -1,0 +1,12 @@
+I am attaching two macros which might be useful (hoping you do not have them already)
+1- convert 1d root histo into ascii file readable by xtrackn
+2- convert 2d root hist into cmat format
+
+usage of first: run root
+call routine by .L roottoascii_xtsp.C
+then        roottoascii_xtsp((TH1F*) h)
+
+the second needs to be modified and compiled
+
+Ciao
+Giovanna 

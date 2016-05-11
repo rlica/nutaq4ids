@@ -1,0 +1,114 @@
+runName    ./Run
+timegate   50
+cs-tac     4
+pair-tac   3
+reftype    6
+flagtype   0
+ref_unit   10 ms
+run_unit   10 s
+Format     gasp
+Fold       1
+
+
+|Index	|Type	|Mod	|Chan	|Delay	|Link	|Start	|Stop	|Comment
+1	1	1	1	0       0	0	0	Clov1 #1
+2	1	1	2	0       0	0	0	Clov1 #2
+3	1	1	3	0       0	0	0	Clov1 #3
+4	1	1	4	0       0	0	0	Clov1 #4
+5	1	1	5	0       0	0	0	Clov2 #1
+6	1	1	6	0       0	0	0	Clov2 #2
+7	1	1	7	0       0	0	0	Clov2 #3
+8	1	1	8	0       0	0	0	Clov2 #4
+9	1	2	1	0       0	0	0	Clov3 #1
+10	1	2	2	0       0	0	0	Clov3 #2
+11	1	2	3	0       0	0	0	Clov3 #3
+12	1	2	4	0       0	0	0	Clov3 #4
+13	1	2	5	0       0	0	0	Clov4 #1
+14	1	2	6	0       0	0	0	Clov4 #2
+15	1	2	7	0       0	0	0	Clov4 #3
+16	1	2	8	0       0	0	0	Clov4 #4
+
+1	2	3	12      5	0	0	0	La1 
+2	2       3	13      5	0	0	0	La2
+
+1	3	3	2       -52	2	1	2	TAC_La1_La2
+
+1	4	3	4       -41	2	0	0	TAC_BM_La1
+2	4	3	3       -43	2	0	0	TAC_BM_La2
+
+1	5	 3	 11	 3	0	0	0	Beta_M
+2	5	 3	 14	 1	0	0	0	Beta_L
+3	5	 3	 15	 1	0	0	0	Beta_R
+
+1	6	3	1	0	0	0	0	Proton_T1
+
+
+----------------------------------------------------------
+rlica (6 Dec 2014) - tac BM_La1 and BM_La2 are correct now
+----------------------------------------------------------
+
+----
+1	7	3	5       -52	2	0	0	TAC_BR_La1
+2	7	3	6       -396	2	0	0	TAC_BL_La2
+
+
+
+---
+Correlations
+3	5	3	15
+3	5	3	12
+3	6	3	14
+3	6	3	13
+---
+Correlations
+3	4	3	11
+3	4	3	13
+
+---
+3	3	3	12
+3	3	3	11
+
+---
+Correlations
+3	2       3	12
+3	2       3	13
+
+
+---
+Correlations
+1	1	3	12
+1	1	3	13
+
+
+----
+Correlations
+1	1	1	2
+1	1	1	3
+1	1	1	4
+1	1	1	5
+1	1	1	6
+1	1	1	7
+1	1	1	8
+1	1	2	1
+1	1	2	2
+1	1	2	3
+1	1	2	4
+1	1	2	5
+1	1	2	6
+1	1	2	7
+1	1	2	8
+
+
+
+
+
+
+LEGEND
+-----------------------------
+1=Clover Crystal
+2=LaBr
+3=Beta
+4=Pair TAC (La-La)
+5=Common start TAC (Beta-La)
+6=Proton T1
+------------------------------

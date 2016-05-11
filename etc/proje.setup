@@ -1,0 +1,111 @@
+format GASP
+
+
+
+
+*** R. Lica
+******************************************************
+**** EXPERIMENT IS579 - Dec 2014 ********
+******************************************************
+
+
+*-------------------------------------------------------------------------------------------
+*                              Detector definitions
+* F = Run Time 
+* C = Clover (1,2,3,4)
+* L = LaBr (1,2)
+* T = BetaM_LaBr TAC
+* B = Beta (M,L,R)     
+* Coincidence time = HRT - 10 ns/chan 
+* Time vs. Proton  = LRT - 10 ms/chan
+
+
+
+*-------------------------------------------------------------------------------------------
+*                              Energy(0) HRT(1)    LRT(2)   TAC(3)  TAC_Start(3) TAC_Stop(4)  
+*-------------------------------------------------------------------------------------------
+header      F   1  8192 PLUS 1 8192
+cdetector   C   4  SEG 4   3   8192      2048      8192
+detector    L   2          4   8192      2048      8192	    8192
+detector    T   1          5  16384      2048      8192             8192         8192
+detector    B   3          3   8192      2048      8192
+*-------------------------------------------------------------------------------------------
+
+
+
+*---------------------------------------------------------
+* Calibration
+*---------------------------------------------------------
+
+***ENERGY (1keV/chan)
+*recal        C0   ./CloverE-IS579  0.0	2.00  10   8192  0 16
+*recal        L0   ./LaBrE-IS579    0.0	1.00  10   8192  0 2
+**********************************************************
+**********************************************************
+
+
+
+
+*STORE
+
+proje
+
+
+
+
+
+
+******************************************************* 
+*Clover singles, Clover-symm (500ns coincidence gate)
+*******************************************************
+
+*Recall Always
+
+***Clover Singles Sum
+*addback C0 
+*                                                         <----- Change the name below
+*sort2d Ci C0 iClover-R57-59 Res 16 8192 Step 4 128
+
+
+****Clover Gamma-Gamma Symm
+*fold C 2 16
+*sort2d_symm C0 Clover-symm-116Cs-R18 Res 8192
+
+
+
+**************************************** 
+*ET-Clover-mean.ban and Clover-symm.cmat
+****************************************
+
+*Recall Always
+
+*gate C1 10 2000 IN 2 12
+*mean C1 F1
+*add C1 F1 C1 Fact 1.00 -1.00 Off 1000
+*sort3d Ci C0 C1 iET-Clover-mean Res 16 8192 2048 Step 8 256 32
+
+*banana C0 C1 ET-mean Res 8192 2048 IN 2 16
+
+
+*Recall Always
+*addback C0
+
+
+****0.5 keV/chan gain
+*gain C0 0.00 2.00 0 16384 1 16 
+
+
+*fold C 2 16
+*sort2d_symm C0 Clover-symm-ban-g511-R14-23 Res 8192 H0 1
+*                                                          <----- Change the name below
+*sort2d_symm C0 Clover-symm-R53 Res 8192
+
+
+**************************************** 
+*EEdT-Clover.cmat 3D matrix
+****************************************
+
+*sort3d_diff C0 C0 C1 1000 Clover-EEdT-R14-23 Res 4096 4096 2048
+
+*Recall Always
+
