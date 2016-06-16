@@ -1,6 +1,6 @@
 /*
  Nutaq LyrTech to GASPware and ROOT converter
- R. Lica, 2014 - 2015
+ R. Lica, 2014 - 2016
  razvan.lica@cern.ch
  
  https://github.com/rlica/nutaq4ids
@@ -56,7 +56,7 @@ int main( int argc, char **argv )
   
   printf("\n\t\t----------------------------------");
   printf("\n\t\t         Nutaq Converter");
-  printf("\n\t\t           v11.05.2015  ");
+  printf("\n\t\t           v11.05.2016  ");
   printf("\n\t\thttps://github.com/rlica/nutaq4ids");
   printf("\n\t\t----------------------------------");
   printf("\n\n");

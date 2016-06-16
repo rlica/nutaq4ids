@@ -5,7 +5,7 @@
 #R.Lica
 ##############################
 
-CONFIG_FILE="config_rate";   
+CONFIG_FILE=$1;   
 NUMBER_OF_BLOCKS=10           
 WRITE_ROOT='n'
 
@@ -13,13 +13,13 @@ WRITE_ROOT='n'
 
 OLD_FILE_SIZE=0              
 
-if [ -z $1 ] 
+if [ -z $2 ] 
   then
     echo "ERROR: Run path required as argument."
     exit 1
 fi
 
-if [ ! -f $CONFIG_FILE ] 
+if [ ! -f $1 ] 
   then
     echo "ERROR: Cannot find <config_rate>."
     exit 1
@@ -29,7 +29,7 @@ fi
 
 while [ 1 = 1 ] ; do
 
- INPUT_FILE="$(ls -t $1* | head -1)"
+ INPUT_FILE="$(ls -t $2* | head -1)"
  NEW_FILE_SIZE=$(stat -c%s "$INPUT_FILE")
 
 
