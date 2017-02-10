@@ -104,7 +104,7 @@ The timestamp difference entry will appear after the energy entry.
     * It will be considered as a parameter for the detector type set at 'Link'
 5. The header will contain the timestamp of the event in `run_unit` units.
 
-####RATE format (new):
+####RATE format:
 
 1. Set the input file as the second argument: `n4i [config_file] [input_file] [calibration_file]`.
 2. It will print the statistics for the last buffer in the input file. You will be asked to input the number
