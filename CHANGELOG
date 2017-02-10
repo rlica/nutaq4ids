@@ -85,5 +85,7 @@ Changed $(CC) $(LDFLAGS) $(OBJECTS) -o $@ into $(CC) -o $@ $(OBJECTS) $(LDFLAGS)
 Fixed the "old block at the beginning of file" problem, now it reads the first
 timestamp from the second block.
 
+10.02.2017
+The first buffer is skipped completely (is from the old RUN).
 
  
