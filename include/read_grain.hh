@@ -99,7 +99,7 @@ void treat_information(uint64_t datum) {
                 
       last_ts = ts;
       ext_ts = field;
-      if (first_ts == 0 && (current_block > 1 || rate == 1) ) { //changed on 11 May IS605, to get rid of the old buffer at the beginning of new file problem 
+      if (first_ts == 0 && (current_block > 0 || rate == 1) ) { //changed on 11 May IS605, to get rid of the old buffer at the beginning of new file problem 
 	first_ts = ts; 
 	//printf("First timestamp = %.2f s\n\n", first_ts/(float)S);
 	
@@ -391,7 +391,8 @@ void read_grain()
 
       // Loop over data
       for (jj = 0; jj < header->dataLen / sizeof(uint64_t); jj++) {
-	treat_word(data[jj]);
+		if (current_block > 0) 		//skip the first block 
+			treat_word(data[jj]); 
       }
 
       // Write a message
