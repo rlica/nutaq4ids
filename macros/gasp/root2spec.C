@@ -4,7 +4,7 @@
 
 void root2spec(const int Run_no){
 
-const char *E    = "E_NIM"; 
+const char *E    = "E_Ge1"; 
 const int SIZE = 8192;
 int spec[SIZE];
 int overflow=0, underflow=0, entries=0;
@@ -12,8 +12,9 @@ int overflow=0, underflow=0, entries=0;
 FILE *fp;
 fp=fopen(Form("spec%03d.a%d", Run_no, SIZE/1000), "wt");
 
-TChain t("ids");
-t.Add( Form("Run%03d.root", Run_no) );
+TChain t("t");
+//t.Add( Form("Run%03d.root", Run_no) );
+t.Add( Form("80Ga_list_%04d.bin.root", Run_no) );
 
 TLeaf *leaf = t.GetLeaf(E);
 				
@@ -42,7 +43,7 @@ for (int i = 0; i < SIZE; i++) {
 }
 
 cout << "Data written to " << Form("spec%03d.a%d", Run_no, SIZE/1000) << endl;
-cout << "Entries: " << entries << " Overflow: " << overflow << " Underflow: " << underflow << endl;   
+cout << "Valid entries: " << entries << " Overflow: " << overflow << " Underflow: " << underflow << endl;   
 
 
 
