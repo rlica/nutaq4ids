@@ -56,7 +56,7 @@ int main( int argc, char **argv )
   
   printf("\n\t\t----------------------------------");
   printf("\n\t\t         Nutaq Converter");
-  printf("\n\t\t           v11.05.2016  ");
+  printf("\n\t\t           v10.02.2017  ");
   printf("\n\t\thttps://github.com/rlica/nutaq4ids");
   printf("\n\t\t----------------------------------");
   printf("\n\n");

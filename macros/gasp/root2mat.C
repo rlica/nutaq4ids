@@ -4,7 +4,7 @@
 
 //define calibration coefficients calib[nr of det][calibration order]
 // detector numbering starts from 1
-// calibration order = 2 (linear function), 3 (quadratic), etc. 
+// calibration order = 2 (linear function = p0+p1*x), 3 (quadratic), etc. 
 
 float calib[2][2] = { 	1, 0.15, 
 						1, 0.15, 
@@ -48,7 +48,7 @@ void root2mat(const int Run_no){
 
 
 int mat[SIZE][SIZE] = {}; //zero all elements
-int overflow=0, underflow=0, entries=0;
+int overflow=0, entries=0;
 srand(time(0));
 
 FILE *fp;
@@ -77,8 +77,8 @@ for (int i = 0; i < t.GetEntries(); i++) {
 	int valueT1 = leafT1->GetValue();
 	int valueT2 = leafT2->GetValue();
 		
+	//calibrate	
 	if  (valueE1 > 0 && valueE2 > 0) {
-		//calibrate
 		valueE1 = calibrate(1, valueE1);
 		valueE2 = calibrate(2, valueE2);
 	}
@@ -97,7 +97,7 @@ for (int i = 0; i < t.GetEntries(); i++) {
 		}
 		else overflow++;
 	}
-	else underflow++;
+
 
 }
 
