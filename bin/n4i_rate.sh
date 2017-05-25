@@ -6,7 +6,7 @@
 ##############################
 
 CONFIG_FILE=$1;   
-NUMBER_OF_BLOCKS=10           
+NUMBER_OF_BLOCKS=50           
 WRITE_ROOT='n'
 
 ##############################
@@ -45,7 +45,7 @@ echo
     OLD_FILE_SIZE=$NEW_FILE_SIZE
     	
    else
-    printf "$(date)    $(du -h $INPUT_FILE)    Waiting for file update ... \r"
+    printf "$(date)    Waiting for file update ... \r"
     sleep 1
  fi
 
