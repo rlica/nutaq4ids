@@ -5,7 +5,7 @@
 ##############################
 
 
-NUMBER_OF_BLOCKS=100           
+NUMBER_OF_BLOCKS=50           
 WRITE_ROOT='y'
 
 RAW_PATH='/home/TapeData/IS633/'
@@ -14,8 +14,7 @@ CONFIG_FILE='/home/idsuser/Experiments/2017/IS633/root/conf/config_rate'
 CAL_FILE='/home/idsuser/Experiments/2017/IS633/root/conf/EClovers_152Eu.cal'   
 ROOT_MACRO='/home/idsuser/Experiments/2017/IS633/root/macros/yield.C'   
 
-MESSAGE='Yield of 511 keV (cps) = '
-
+echo $RAW_PATH 
 
 ##############################
 
@@ -40,8 +39,9 @@ $NUMBER_OF_BLOCKS
 $WRITE_ROOT
 echo
 
+rm -f n4i_Run0.LOG
 
-sleep 1
+sleep 2
 
 #RUNNING ROOT MACRO
 root -b -l -q $ROOT_MACRO"(0)"
@@ -58,21 +58,23 @@ tput sgr0
 echo "============================================"
 
 
-    #bash handles only integer maths but you can use bc
+#bash handles only integer maths but you can use bc
+#if (( $(echo "$YIELD511 > 0" |bc -l)  )); then
 
-	if (( $(echo "$YIELD511 > 0" |bc -l)  )); then
+
 	#SENDING DATA TO GRAFANA
-	curl --user is633:xNnZcCXr3PJE -i -XPOST 'http://influx.kern.phys.au.dk/write?db=is633'	--data-binary "nutaq,E=511 count=$YIELD511" >> /dev/null 
-	curl --user ids:yrYm3HDLCfVN -i -XPOST 'http://influx.kern.phys.au.dk/write?db=ids' --data-binary "nutaq,E=511 count=$YIELD511" >> /dev/null 
-	curl --user ids:yrYm3HDLCfVN -i -XPOST 'http://influx.kern.phys.au.dk/write?db=ids' --data-binary "nutaq,E=1461 count=$YIELD1461" >> /dev/null 
+	#curl --user is633:xNnZcCXr3PJE -i -XPOST 'http://influx.kern.phys.au.dk/write?db=is633'	--data-binary "nutaq,E=511 count=$YIELD511" >> /dev/null 
+	curl --user ids:yrYm3HDLCfVN -i -XPOST 'http://influx.kern.phys.au.dk/write?db=ids' --data-binary "test clov_511=$YIELD511" #>> /dev/null 
+	curl --user ids:yrYm3HDLCfVN -i -XPOST 'http://influx.kern.phys.au.dk/write?db=ids' --data-binary "test clov_1461=$YIELD1461" #>> /dev/null 
 
-	fi
+
+#	fi
 	
 
 
 printf "$(date)    $(du -h $INPUT_FILE) \n"
 OLD_FILE_SIZE=$NEW_FILE_SIZE
-sleep 10
+sleep 5
 
     	
    else
