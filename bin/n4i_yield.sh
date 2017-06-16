@@ -8,11 +8,11 @@
 NUMBER_OF_BLOCKS=50           
 WRITE_ROOT='y'
 
-RAW_PATH='/home/TapeData/IS633/'
-EXP_PATH='/home/idsuser/Experiments/2017/IS633/root/'
-CONFIG_FILE='/home/idsuser/Experiments/2017/IS633/root/conf/config_rate'   
-CAL_FILE='/home/idsuser/Experiments/2017/IS633/root/conf/EClovers_152Eu.cal'   
-ROOT_MACRO='/home/idsuser/Experiments/2017/IS633/root/macros/yield.C'   
+RAW_PATH='/home/TapeData/IS608/'
+EXP_PATH='/home/idsuser/Experiments/2017/IS608/root/'
+CONFIG_FILE='/home/idsuser/Experiments/2017/IS608/root/conf/config_rate'   
+CAL_FILE='/home/idsuser/Experiments/2017/IS608/root/conf/EClovers_152Eu.cal'   
+ROOT_MACRO='/home/idsuser/Experiments/2017/IS608/root/macros/yield.C'   
 
 echo $RAW_PATH 
 
@@ -64,8 +64,8 @@ echo "============================================"
 
 	#SENDING DATA TO GRAFANA
 	#curl --user is633:xNnZcCXr3PJE -i -XPOST 'http://influx.kern.phys.au.dk/write?db=is633'	--data-binary "nutaq,E=511 count=$YIELD511" >> /dev/null 
-	curl --user ids:yrYm3HDLCfVN -i -XPOST 'http://influx.kern.phys.au.dk/write?db=ids' --data-binary "test clov_511=$YIELD511" #>> /dev/null 
-	curl --user ids:yrYm3HDLCfVN -i -XPOST 'http://influx.kern.phys.au.dk/write?db=ids' --data-binary "test clov_1461=$YIELD1461" #>> /dev/null 
+	curl --user ids:yrYm3HDLCfVN -i -XPOST 'http://influx.kern.phys.au.dk/write?db=ids' --data-binary "IS608 clov_511=$YIELD511" #>> /dev/null 
+	curl --user ids:yrYm3HDLCfVN -i -XPOST 'http://influx.kern.phys.au.dk/write?db=ids' --data-binary "IS608 clov_1461=$YIELD1461" #>> /dev/null 
 
 
 #	fi
