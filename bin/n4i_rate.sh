@@ -8,8 +8,8 @@
 NUMBER_OF_BLOCKS=50           
 WRITE_ROOT='n'
 
-RAW_PATH='/home/TapeData/IS633/'
-CONFIG_FILE='/home/idsuser/Experiments/2017/IS633/root/conf/config_rate'   
+RAW_PATH='/home/TapeData/IS608/'
+CONFIG_FILE='/home/idsuser/Experiments/2017/IS608/root/conf/config_rate'   
 
 
 ##############################
