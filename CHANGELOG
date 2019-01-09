@@ -88,4 +88,5 @@ timestamp from the second block.
 10.02.2017
 The first buffer is skipped completely (is from the old RUN).
 
- 
+09.01.2019
+Increased the maximum number of detectors of the same type from 30 to 70.
