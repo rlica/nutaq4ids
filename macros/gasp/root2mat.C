@@ -17,17 +17,17 @@ const char *E1    = "E_Ge1",
 		   
 const int TIMEGATE = 30;
 const int SIZE = 8192;
-
+gRandom = new TRandom3();
 
 
 int calibrate(int id, int energy) {
   
     int i;
     const int MAX_CAL = 2; 
-	double prob;
+	double prob, rand;
 	double d_energy = 0;
 	int    i_energy = 0;
-	gRandom = new TRandom3();
+
 
 	for (i=0; i<MAX_CAL; i++)
 		d_energy += calib[id-1][i] * pow(energy, i);
@@ -36,9 +36,11 @@ int calibrate(int id, int energy) {
 	
    
 	prob = (d_energy - i_energy);
+	rand = gRandom->Rndm(); 
 
-  
-	if (gRandom->Rndm() < prob) i_energy += 1;
+			
+	if (rand < prob) i_energy += 1;
+			
 	
 	return i_energy;
 

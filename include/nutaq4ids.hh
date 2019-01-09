@@ -1,7 +1,7 @@
 
 //Message to my future self: lower 'memoryuse' when getting wierd segmentation faults
 //I don't know (yet) why if MAX_NUM_DETTYPES = 20 the program will crash
-#define MAX_NUM_DET       30
+#define MAX_NUM_DET       70
 #define MAX_NUM_DETTYPES  30
 #define MAX_NUM_CHN       17
 #define MAX_NUM_MOD       10

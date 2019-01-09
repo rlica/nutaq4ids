@@ -9,6 +9,7 @@ float calib[2]    = { 0, 1 }; //p0, p1
 const char *E    = "E_Ge1"; 
 const int SIZE = 16384;
 
+gRandom = new TRandom3();
 
 int calibrate(int energy) {
   
@@ -17,7 +18,6 @@ int calibrate(int energy) {
 	double prob;
 	double d_energy = 0;
 	int    i_energy = 0;
-	gRandom = new TRandom3();
 
 	for (i=0; i<MAX_CAL; i++)
 		d_energy += calib[i] * pow(energy, i);
