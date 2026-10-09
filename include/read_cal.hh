@@ -16,7 +16,7 @@ void read_cal(int argc, char **argv) {
   int status, id, count=0;
   double cal[MAX_CAL];
   FILE *cal_file;
-  char line[100];
+  char line[10000];
     
   if ( rate == 0 && (argc < 3 || !fopen(argv[2], "r")) ) {
     printf("No calibrations will be used: ...$n4i [config_file_name] [cal_file_name] \n");
