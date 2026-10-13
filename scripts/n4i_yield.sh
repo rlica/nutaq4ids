@@ -6,6 +6,11 @@
 
 
 NUMBER_OF_BLOCKS=50           
+#InfluxDB credentials -- CHANGE THESE before running (format: user:password)
+INFLUX_USER_IDS='user:password'
+#INFLUX_USER_IS633='user:password'
+
+
 WRITE_ROOT='y'
 
 RAW_PATH='/home/TapeData/IS608/'
@@ -63,9 +68,9 @@ echo "============================================"
 
 
 	#SENDING DATA TO GRAFANA
-	#curl --user is633:***REMOVED*** -i -XPOST 'http://influx.kern.phys.au.dk/write?db=is633'	--data-binary "nutaq,E=511 count=$YIELD511" >> /dev/null 
-	curl --user ids:***REMOVED*** -i -XPOST 'http://influx.kern.phys.au.dk/write?db=ids' --data-binary "IS608 clov_511=$YIELD511" #>> /dev/null 
-	curl --user ids:***REMOVED*** -i -XPOST 'http://influx.kern.phys.au.dk/write?db=ids' --data-binary "IS608 clov_1461=$YIELD1461" #>> /dev/null 
+	#curl --user $INFLUX_USER_IS633 -i -XPOST 'http://influx.kern.phys.au.dk/write?db=is633'	--data-binary "nutaq,E=511 count=$YIELD511" >> /dev/null 
+	curl --user $INFLUX_USER_IDS -i -XPOST 'http://influx.kern.phys.au.dk/write?db=ids' --data-binary "IS608 clov_511=$YIELD511" #>> /dev/null 
+	curl --user $INFLUX_USER_IDS -i -XPOST 'http://influx.kern.phys.au.dk/write?db=ids' --data-binary "IS608 clov_1461=$YIELD1461" #>> /dev/null 
 
 
 #	fi
